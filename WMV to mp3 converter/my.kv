@@ -1,0 +1,82 @@
+<MainInterface>:
+
+MainInterface:
+    cols: 1
+    rows: 3
+
+    Button:
+        name: 'search for wma'
+        text: 'Convert wma files'
+        size_hint: 1, 1
+        size: 1, 4
+        on_release:root.wma_convert(foundFiles, input)
+
+    TextInput:
+        id: input
+        pos: 100, 100
+        size: 200, 30
+        text: "Paste file directory here and press enter."
+        multiline: False
+        on_text_validate:root.search_button(foundFiles, input)
+
+    ScrollableLabel:
+        ScrollView:
+            Label:
+                padding: 5
+                spacing: 5
+                pos: 5, 5
+                line_height: 1.15
+                id: foundFiles
+                size_hint_y: None
+                height: max(self.texture_size[1], self.parent.height)
+                text_size: self.width, None
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                color: 0,0,0,1
+
+
+<MainInterface2>:
+    GridLayout:
+        size:
+        spacing: 10
+        rows: 3
+        cols: 1
+        pos: 50, 50
+        spacing: 1
+        padding: 5
+
+        Button:
+            name: 'search for wma'
+            text: 'search for wma files'
+            size_hint: 1, 1
+            size: 1, 4
+            on_press:root.search_button(foundFiles, input)
+
+        TextInput:
+            id: input
+            pos: 100, 100
+            size: 200, 30
+            text: ""
+            multiline: False
+            on_text_validate:root.On_Enter_Pressed()
+
+        Label:
+            id: foundFiles
+            size_hint: 1, 1
+            pos: 10, 10
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            font_size: 16
+            text: 'hello'
+            color: 0,0,0,1
+            text_size: self.size
+            halign: 'left'
+            valign: 'top'
