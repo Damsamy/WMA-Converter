@@ -6,6 +6,9 @@ from kivy.core.window import Window
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.scrollview import ScrollView
 from kivy.properties import StringProperty
+from kivy.logger import Logger, LOG_LEVELS
+
+Logger.setLevel(LOG_LEVELS["debug"])
 
 Window.size = (480, 480)
 
