@@ -8,7 +8,6 @@ from kivy.uix.scrollview import ScrollView
 from kivy.properties import StringProperty
 
 Window.size = (480, 480)
-# wmaFinder.find_wma(folder="/home/spiced/Music/Music/Music/System Of A Down/Unknown Album/")
 
 
 class MainInterface(GridLayout):
