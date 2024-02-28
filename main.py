@@ -18,8 +18,6 @@ class MainInterface(GridLayout):
     def build(self):
         return self
 
-    # def on_enter_pressed(self, ID, input):
-    #     print("enter has been pressed")
 
     def search_button(self, ID, input):
         path = input.text
