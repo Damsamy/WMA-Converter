@@ -10,7 +10,3 @@ def find_wma(folder):
     entries_num = len(entries)
 
     return entries
-
-
-f = find_wma('/home/spiced/Downloads/System Of A Down/')
-print(f)
