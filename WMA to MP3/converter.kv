@@ -1,29 +1,28 @@
 <MainInterface>:
     cols: 1
     rows: 3
-    Button:
-        name: 'search for wma'
-        text: 'Convert wma files'
-        size_hint: 1, 1
-        size: 1, 4
-        on_release:root.wma_convert(foundFiles, input)
+    BoxLayout:
+        Button:
+            size_hint: 0.4, 1
+            id: 'search'
+            text: 'search for .wma'
+            on_release:root.search_button(foundFiles, input)
 
-    TextInput:
-        id: input
-        pos: 100, 100
-        size: 200, 30
-        text: "Paste file directory here and press enter."
-        multiline: False
-        on_text_validate:root.search_button(foundFiles, input)
+        FileChooserListView:
+            size_hint: 1, 1
+            id: input
+            text: 'Choose directory'
+            dirselect: True
+            path: '/home/spiced/Downloads'
 
     ScrollableLabel:
         ScrollView:
             Label:
+                id: foundFiles
                 padding: 5
                 spacing: 5
                 pos: 5, 5
                 line_height: 1.15
-                id: foundFiles
                 size_hint_y: None
                 height: max(self.texture_size[1], self.parent.height)
                 text_size: self.width, None
@@ -34,3 +33,10 @@
                         pos: self.pos
                         size: self.size
                 color: 0,0,0,1
+
+    Button:
+        name: 'convert'
+        text: 'Convert wma files'
+        size_hint: 1, 0.5
+        size: 1, 4
+        on_release:root.wma_convert(foundFiles, input)
