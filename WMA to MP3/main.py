@@ -9,20 +9,18 @@ from kivy.properties import StringProperty
 from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
 from kivy.logger import Logger, LOG_LEVELS
-
+from kivy.uix.filechooser import FileChooserListView
 Logger.setLevel(LOG_LEVELS["debug"])
 
 Window.size = (480, 480)
-
-class MyTextInput(BoxLayout):
-    def on_text_input(self, text):
-        print("Text input changed to:", text)
 
 
 class MainInterface(GridLayout):
 
     def search_button(self, ID, input):
-        path = input.text
+        path = ''.join(input.selection)
+        print(path)
+
         # Check if the entered text is a directory
         if os.path.isdir(path):
             # Use the file finder function to search for .wma files recursively
@@ -46,7 +44,7 @@ class MainInterface(GridLayout):
 
     def wma_convert(self, ID, input):
         ID.text = "Please wait, this may take awhile."
-        wma_dir = input.text
+        wma_dir = ''.join(input.selection)
         if os.path.isdir(wma_dir):
             converter.convert_wma(directory=f'{wma_dir}')
             file_list = wmaFinder.find_wma(folder=f"{wma_dir}")
@@ -65,8 +63,10 @@ class ScrollableLabel(ScrollView):
 
 class ConverterApp(App):
     def build(self):
+
         return MainInterface()
 
 
 if __name__ == '__main__':
     ConverterApp().run()
+
